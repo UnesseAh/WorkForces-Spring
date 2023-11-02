@@ -1,15 +1,17 @@
 package org.workforces.service;
 
-import org.workforces.domain.Employee;
+import org.workforces.repository.interfaces.EmployeeRepository;
 import org.workforces.service.interfaces.EmployeeService;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private final Employee employee;
-    public EmployeeServiceImpl(Employee employee){
-        this.employee = employee;
+    EmployeeRepository employeeRepository;
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
     }
+
     @Override
-    public void doSomething() {
-        System.out.println("do something method is working!");
+    public String createEmployee() {
+        return employeeRepository.save();
     }
 }
