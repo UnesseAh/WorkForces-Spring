@@ -1,4 +1,4 @@
-package org.workforces.service.interfaces;
+package service.interfaces;
 
 public interface DepartmentService {
     public String createDepartment();

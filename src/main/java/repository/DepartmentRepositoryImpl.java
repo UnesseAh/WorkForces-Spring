@@ -1,8 +1,8 @@
-package org.workforces.repository;
+package repository;
 
-import org.workforces.domain.Department;
-import org.workforces.repository.interfaces.DepartmentRepository;
-
+import org.springframework.stereotype.Component;
+import repository.interfaces.DepartmentRepository;
+@Component("departmentRepository")
 public class DepartmentRepositoryImpl implements DepartmentRepository {
     @Override
     public String save() {

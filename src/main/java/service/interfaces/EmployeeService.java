@@ -1,4 +1,4 @@
-package org.workforces.service.interfaces;
+package service.interfaces;
 
 public interface EmployeeService {
     public String createEmployee();

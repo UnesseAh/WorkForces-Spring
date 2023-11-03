@@ -1,7 +1,8 @@
-package org.workforces.repository;
+package repository;
 
-import org.workforces.repository.interfaces.EmployeeRepository;
-
+import org.springframework.stereotype.Component;
+import repository.interfaces.EmployeeRepository;
+@Component("employeeRepository")
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public String save() {

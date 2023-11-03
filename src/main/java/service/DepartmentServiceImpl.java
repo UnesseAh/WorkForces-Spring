@@ -1,11 +1,14 @@
-package org.workforces.service;
+package service;
 
-import org.workforces.repository.interfaces.DepartmentRepository;
-import org.workforces.service.interfaces.DepartmentService;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import repository.interfaces.DepartmentRepository;
+import service.interfaces.DepartmentService;
+@Component
 public class DepartmentServiceImpl implements DepartmentService {
     DepartmentRepository departmentRepository;
 
+    @Autowired
     public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }

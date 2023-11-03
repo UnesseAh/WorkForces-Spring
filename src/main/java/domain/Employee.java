@@ -1,4 +1,4 @@
-package org.workforces.domain;
+package domain;
 
 import java.util.Objects;
 

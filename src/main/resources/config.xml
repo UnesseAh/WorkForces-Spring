@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="employeeRepository" class="org.workforces.repository.EmployeeRepositoryImpl"/>
-    <bean id="employeeService" class="org.workforces.service.EmployeeServiceImpl">
+    <bean id="employeeRepository" class="repository.EmployeeRepositoryImpl"/>
+    <bean id="employeeService" class="service.EmployeeServiceImpl">
         <constructor-arg ref="employeeRepository"/>
     </bean>
 
-    <bean id="departmentRepository" class="org.workforces.repository.DepartmentRepositoryImpl"/>
-    <bean id="departmentService" class="org.workforces.service.DepartmentServiceImpl">
+    <bean id="departmentRepository" class="repository.DepartmentRepositoryImpl"/>
+    <bean id="departmentService" class="service.DepartmentServiceImpl">
         <constructor-arg ref="departmentRepository"/>
     </bean>
 </beans>
