@@ -1,18 +1,28 @@
 package domain;
 
-import java.util.Objects;
+import javax.persistence.*;
 
+@Entity
 public class Employee {
-    private int id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private double salary;
+    @ManyToOne
+    private Department department;
 
     public Employee() {
     }
 
-    public Employee(String name, double salary) {
+    public Employee(Long id, String name, double salary, Department department) {
+        this.id = id;
         this.name = name;
         this.salary = salary;
+        this.department = department;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -31,17 +41,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Double.compare(salary, employee.salary) == 0 && Objects.equals(name, employee.name);
+    public Department getDepartment() {
+        return department;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, salary);
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -50,6 +55,7 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", salary=" + salary +
+                ", department=" + department +
                 '}';
     }
 }

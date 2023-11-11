@@ -1,25 +1,46 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import repository.interfaces.EmployeeRepository;
-import service.interfaces.EmployeeService;
+import domain.Employee;
+import repository.EmployeeRepository;
 
-@Component
+import java.util.List;
+import java.util.Optional;
+
 public class EmployeeServiceImpl implements EmployeeService {
-    @Autowired
-    private EmployeeRepository employeeRepository;
+
+    private final EmployeeRepository employeeRepository;
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
     @Override
-    public String createEmployee() {
-        return employeeRepository.save();
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
     }
 
-//    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-//        this.employeeRepository = employeeRepository;
-//    }
+    @Override
+    public Optional<Employee> findById(Long id) {
+        return employeeRepository.findById(id);
+    }
+
+    @Override
+    public void create(Employee employee) {
+        employeeRepository.save(employee);
+    }
+
+    @Override
+    public void update(Employee employee) {
+        Optional<Employee> existingEmployee = employeeRepository.findById(employee.getId());
+
+        if (existingEmployee.isPresent()){
+            employeeRepository.save(employee);
+        }
+    }
+
+    @Override
+    public void delete(Employee employee) {
+
+        employeeRepository.delete(employee);
+    }
 }
